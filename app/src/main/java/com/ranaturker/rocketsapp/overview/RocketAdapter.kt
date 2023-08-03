@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.utils.widget.ImageFilterView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.ranaturker.rocketsapp.R
 import com.ranaturker.rocketsapp.network.Rockets
 
@@ -36,7 +38,8 @@ class RocketAdapter(
     inner class RocketViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
-        private val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
+        private val costTextView: TextView = itemView.findViewById(R.id.costTextView)
+        private val imageViewRocket: ImageFilterView = itemView.findViewById(R.id.imageViewRocket)
 
         init {
             itemView.setOnClickListener {
@@ -48,11 +51,10 @@ class RocketAdapter(
         }
 
         fun bind(rocket: Rockets) {
+            val cost = "$" + rocket.costPerLaunch?.toString()
             nameTextView.text = rocket.name
-            descriptionTextView.text = rocket.description
-
-            // itemView.setOnClickListener { ... }
-
+            costTextView.text = cost
+            imageViewRocket.load(rocket.flickrImages?.get(0))
         }
     }
 

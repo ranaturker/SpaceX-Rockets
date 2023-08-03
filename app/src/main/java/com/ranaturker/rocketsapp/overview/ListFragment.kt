@@ -1,4 +1,4 @@
-package com.ranaturker.spacex.overview
+package com.ranaturker.rocketsapp.overview
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,15 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.ranaturker.rocketsapp.R
-import com.ranaturker.rocketsapp.overview.ListViewModel
-import com.ranaturker.rocketsapp.overview.RocketAdapter
+import com.ranaturker.rocketsapp.databinding.FragmentListBinding
+import com.ranaturker.rocketsapp.network.Rockets
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(), RocketAdapter.RecyclerViewEvent {
 
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var binding: FragmentListBinding
     private lateinit var rocketAdapter: RocketAdapter
     private val viewModel: ListViewModel by viewModels()
 
@@ -24,16 +23,15 @@ class ListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_list, container, false)
-        recyclerView = rootView.findViewById(R.id.recyclerView)
+        binding = FragmentListBinding.inflate(layoutInflater)
         // Fetch the rockets from the API
-        return rootView
+        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        rocketAdapter = RocketAdapter(emptyList()) // Empty list to start with
+        rocketAdapter = RocketAdapter(emptyList(), this@ListFragment) // Empty list to start with
         recyclerView.adapter = rocketAdapter
 
         // Observe the list of rockets from the view model
@@ -45,4 +43,9 @@ class ListFragment : Fragment() {
         })
 
     }
+
+    override fun onItemClick(data: Rockets) {
+        findNavController().navigate(ListFragmentDirections.actionListFragmentToDetailFragment2(data))
+    }
 }
+

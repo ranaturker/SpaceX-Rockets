@@ -7,16 +7,19 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.ranaturker.spacex.overview.ListFragment"
-        android:label="ListFragment" >
+        android:name="com.ranaturker.rocketsapp.overview.ListFragment"
+        android:label="ListFragment">
         <action
             android:id="@+id/action_listFragment_to_detailFragment2"
             app:destination="@id/detailFragment" />
     </fragment>
-    <activity
+    <fragment
         android:id="@+id/detailFragment"
         android:name="com.ranaturker.rocketsapp.overview.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
-
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="rocket"
+            app:argType="com.ranaturker.rocketsapp.network.Rockets" />
+    </fragment>
 </navigation>
