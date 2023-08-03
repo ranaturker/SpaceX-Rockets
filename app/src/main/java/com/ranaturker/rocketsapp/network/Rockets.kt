@@ -1,8 +1,11 @@
 package com.ranaturker.rocketsapp.network
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Rockets(
     @SerializedName("active")
     val active: Boolean? = false,
@@ -24,4 +27,4 @@ data class Rockets(
     val successRatePct: Int? = 0,
     @SerializedName("wikipedia")
     val wikipedia: String? = ""
-)
+):Parcelable

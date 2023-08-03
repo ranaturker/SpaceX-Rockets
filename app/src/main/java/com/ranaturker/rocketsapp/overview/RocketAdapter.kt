@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ranaturker.rocketsapp.R
 import com.ranaturker.rocketsapp.network.Rockets
 
-class RocketAdapter(private var rocketList: List<Rockets>) : RecyclerView.Adapter<RocketAdapter.RocketViewHolder>() {
+class RocketAdapter(
+    private var rocketList: List<Rockets>,
+    val listener: RecyclerViewEvent
+) :
+    RecyclerView.Adapter<RocketAdapter.RocketViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RocketViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.rocket_item, parent, false)
@@ -34,11 +38,25 @@ class RocketAdapter(private var rocketList: List<Rockets>) : RecyclerView.Adapte
         private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
         private val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
 
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(rocketList[position])
+                }
+            }
+        }
+
         fun bind(rocket: Rockets) {
             nameTextView.text = rocket.name
             descriptionTextView.text = rocket.description
 
             // itemView.setOnClickListener { ... }
+
         }
+    }
+
+    interface RecyclerViewEvent {
+        fun onItemClick(data: Rockets)
     }
 }
