@@ -18,6 +18,7 @@ class ListFragment : Fragment(), RocketAdapter.RecyclerViewEvent {
     private lateinit var rocketAdapter: RocketAdapter
     private val viewModel: ListViewModel by viewModels()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

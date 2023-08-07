@@ -39,6 +39,7 @@ class RocketAdapter(
 
         private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
         private val costTextView: TextView = itemView.findViewById(R.id.costTextView)
+        private val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
         private val imageViewRocket: ImageFilterView = itemView.findViewById(R.id.imageViewRocket)
 
         init {
@@ -54,6 +55,7 @@ class RocketAdapter(
             val cost = "$" + rocket.costPerLaunch?.toString()
             nameTextView.text = rocket.name
             costTextView.text = cost
+            dateTextView.text = rocket.firstFlight
             imageViewRocket.load(rocket.flickrImages?.get(0))
         }
     }

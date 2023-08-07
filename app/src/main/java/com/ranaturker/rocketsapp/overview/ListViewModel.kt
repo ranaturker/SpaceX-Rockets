@@ -16,7 +16,7 @@ class ListViewModel : ViewModel() {
     val rocketsLiveData = MutableLiveData<List<Rockets>?>()
     val rockets: LiveData<List<Rockets>?> = rocketsLiveData
 
-    fun getRockets() {
+  fun getRockets() {
         viewModelScope.launch {
             RocketsApiService.api.getRockets().enqueue(object : retrofit2.Callback<List<Rockets>> {
 

@@ -5,5 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.RocketsApp" parent="Base.Theme.RocketsApp" />
+    <style name="Theme.RocketsApp" parent="Base.Theme.RocketsApp">
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
 </resources>
