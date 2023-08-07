@@ -1,20 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_space"
+    android:orientation="vertical"
     tools:context=".overview.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/name"
+    <ImageView
+        android:id="@+id/imageBack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_gravity="top"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_back"
+        app:layout_constraintBottom_toBottomOf="@+id/description"
+        app:layout_constraintEnd_toEndOf="@+id/description"
+        app:layout_constraintStart_toStartOf="@+id/description"
+        app:layout_constraintTop_toTopOf="@+id/description" />
+
+    <ImageView
+        android:id="@+id/imageViewRocket"
+        android:layout_width="340dp"
+        android:layout_height="150dp"
+        android:layout_gravity="top"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_32"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_100tb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_12"
+        android:gravity="center"
+        android:text="@string/name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_36"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRocket"
+        />
+
+    <TextView
+        android:id="@+id/descriptionLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_32"
+        android:layout_marginTop="@dimen/margin_32"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/description"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/successRateLabelTextView" />
+
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16"
+        android:layout_marginStart="@dimen/margin_48"
+        android:layout_marginTop="@dimen/margin_16"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/descriptionText"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintStart_toStartOf="@+id/descriptionLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionLabelTextView" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageViewStatus"
+        android:layout_width="17dp"
+        android:layout_height="18dp"
+        android:layout_gravity="top"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_active"
+        app:layout_constraintBottom_toBottomOf="@id/name"
+        app:layout_constraintEnd_toStartOf="@id/name"
+        android:layout_marginEnd="@dimen/margin_12"
+        app:layout_constraintTop_toTopOf="@id/name" />
+
+    <ImageView
+        android:id="@+id/iconCompany"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_company"
+        app:layout_constraintEnd_toStartOf="@+id/companyLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/iconCountry" />
+
+    <TextView
+        android:id="@+id/companyLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_64"
+        android:layout_marginTop="@dimen/margin_32"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/company"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countryLabelTextView" />
+
+    <TextView
+        android:id="@+id/company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_32"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/companyText"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/companyLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/country" />
+
+    <ImageView
+        android:id="@+id/iconCountry"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="top"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_country"
+        app:layout_constraintEnd_toStartOf="@+id/countryLabelTextView"
+        app:layout_constraintTop_toTopOf="@+id/countryLabelTextView" />
+
+    <TextView
+        android:id="@+id/countryLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_64"
+        android:layout_marginTop="@dimen/margin_32"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/country"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_32"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/countryText"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/countryLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <ImageView
+        android:id="@+id/iconSuccess"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_success"
+        app:layout_constraintEnd_toStartOf="@+id/successRateLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/iconCompany" />
+
+    <TextView
+        android:id="@+id/successRateLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_64"
+        android:layout_marginTop="@dimen/margin_32"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/success_rate"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/companyLabelTextView" />
+
+    <TextView
+        android:id="@+id/successRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_32"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/successRate"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/successRateLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/company" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/wikipedia"
+        android:layout_width="211dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="@dimen/margin_32"
+        android:layout_marginBottom="@dimen/margin_32"
+        android:background="#85FFFFFF"
+        android:backgroundTint="#9FFFFFFF"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/wikipedia"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
